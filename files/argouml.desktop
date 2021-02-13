@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=ArgoUML
+Exec=/usr/local/argouml/argouml.sh
+Icon=/usr/local/argouml/icon/ArgoIcon128x128.png
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Utility;Java;Development;UML
