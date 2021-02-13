@@ -6,6 +6,6 @@ echo "JDK 11 --> run"
 apt-get install openjdk-11-jdk
 
 echo "Maven 3.6 --> run"
-apt install maven:3.6/default
+apt install maven
 
 echo "Do NOT forget to install Intellij IDEA"

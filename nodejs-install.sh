@@ -8,8 +8,7 @@ echo "show the repository added : "
 cat /etc/apt/sources.list.d/nodesource.list
 echo "run install nodejs 14 :"
 apt -y install nodejs
-version = node -v
-echo "node version installed --> $version"
+echo "node version installed --> $(node -v)"
 
 echo "install yarn :"
 npm install -g yarn
