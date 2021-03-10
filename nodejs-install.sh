@@ -13,4 +13,5 @@ echo "node version installed --> $(node -v)"
 echo "install yarn :"
 npm install -g yarn
 
-#npm install -g npm
+npm install -g npm
+sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
