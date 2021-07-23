@@ -19,4 +19,9 @@ public class RepoGitRestController {
     public ResponseEntity<?> getNbrRepoUseSameLanguage() throws IOException {
         return ResponseEntity.ok(this.repositorieService.getNbrRepoUseSameLanguage());
     }
+
+    @GetMapping("/repositorie/statistique")
+    public ResponseEntity<?> getRepoNbrWithLanguage() {
+        return ResponseEntity.ok(this.repositorieService.getRepoNbrWithLanguage());
+    }
 }

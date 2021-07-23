@@ -2,6 +2,7 @@ package com.gemography.challengecode.service.imp;
 
 import com.gemography.challengecode.dto.RepoDto;
 import com.gemography.challengecode.model.Repository;
+import com.gemography.challengecode.model.Response;
 import com.gemography.challengecode.service.RepositorieService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,6 +17,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
@@ -31,11 +33,9 @@ public class RepositorieServiceImp implements RepositorieService {
         String dateOfLastThirtyDays = this.returnLastThirty();
         URI uri = URI.create(String.format("https://api.github.com/search/repositories?q=created:%s&sort=stars&order=desc&per_page=100", dateOfLastThirtyDays));
         ResponseEntity<Response> listRepos = this.restTemplate.getForEntity(uri, Response.class);
-        Map<String, List<Repository>> mapListDesRepoParLanguage = listRepos.getBody().items.stream()
+        return Objects.requireNonNull(listRepos.getBody()).getItems().stream()
                 .filter(r -> r.getLanguage() != null)
                 .collect(groupingBy(Repository::getLanguage));
-
-        return mapListDesRepoParLanguage;
     }
 
     @Override
@@ -63,10 +63,5 @@ public class RepositorieServiceImp implements RepositorieService {
 
 }
 
-@Data
-class Response {
-    Long total_count;
-    boolean incomplete_results;
-    List<Repository> items;
-}
+
 
