@@ -15,3 +15,6 @@ npm install -g yarn
 
 npm install -g npm
 sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
+
+echo "install angular 11"
+sudo npm install -g @angular/cli@11.0.5
